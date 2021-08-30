@@ -2,5 +2,5 @@ import numpy as np
 
 class neuralNetwork:
     def main():
-        print("hi")
+        print("yes")
 neuralNetwork.main()
