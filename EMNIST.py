@@ -1,7 +1,5 @@
 import idx2numpy
 import numpy as np
-import tensorflow as tf
-from tensorflow import keras
 
 testImages = "C:/Users/zmews/GitHub/machine-learning/mnist/t10k-images.idx3-ubyte"
 testLabels = "C:/Users/zmews/GitHub/machine-learning/mnist/t10k-labels.idx1-ubyte"
@@ -12,3 +10,5 @@ testImageArr = idx2numpy.convert_from_file(testImages)
 testLabelArr = idx2numpy.convert_from_file(testLabels)
 trainImageArr = idx2numpy.convert_from_file(trainImages)
 trainLabelArr = idx2numpy.convert_from_file(trainLabels)
+
+J = 0
