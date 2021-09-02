@@ -11,4 +11,4 @@ testLabelArr = idx2numpy.convert_from_file(testLabels)
 trainImageArr = idx2numpy.convert_from_file(trainImages)
 trainLabelArr = idx2numpy.convert_from_file(trainLabels)
 
-J = 0
+print(testImageArr)
