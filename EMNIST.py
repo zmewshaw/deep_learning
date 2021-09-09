@@ -12,14 +12,21 @@ trainSetY = idx2numpy.convert_from_file(trainLabels)
 testSetXOrig = idx2numpy.convert_from_file(testImages)
 testSetY = idx2numpy.convert_from_file(testLabels)
 
+A = np.array([[1], [2], [3], [4]])
+B = np.array(1, 2, 3)
+print("A: " + str(A))
+print("B: " + str(B))
+print("np.dot(A, B): " + str(np.dot(A, B)))
+
 # steps:
-# find m_train, m_test, num_px (global)
-# flatten the training and test set (global)
-# standardize the data set (global)
-# sigmoid (function)
-# initialize with 0s (function)
-# propagate (function)
-# optimize (function)
-# predict (function)
-# model (function)
-# logisticRegressionModel = model(trainSetX, trainSetY, testSetX, testSetY, numIterations=TBD, learningRate=TBD)
+# alter training and test set if needed (global) - x.reshape(x.shape[0], -1).T - gives a vector
+def initializeParameters(n_x, n_h, n_y):
+    return parameters
+def linearActivationForward(A_prev, W, b, activation):
+    return A, cache
+def computeCost(AL, Y):
+    return cost
+def linearActivationBackward(dA, cache, activation):
+    return dA_prev, dW, db
+def updateParameters(parameters, grads, learningRate):
+    return parameters
