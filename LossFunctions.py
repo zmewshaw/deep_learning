@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 learningRate = 0.01
 n = 2
 
+for i in range(n):
+    
+
 # MSE functions
 def MSE():
     return yMSE, dxMSE, "MSE"
