@@ -1,29 +1,55 @@
-import time
 import numpy as np
 import matplotlib.pyplot as plt
 
+# hyperparams
 learningRate = 0.01
-numRuns = 1000
+n = 2
 
-def MSE(x):
+# MSE functions
+def MSE():
+    return yMSE, dxMSE, "MSE"
+def yMSE(x):
     return x ** 2
-def dMSE(x):
+def dxMSE(x):
     return x * 2
-def MAE(x):
+
+# MAE functions
+def MAE():
+    return yMAE, dxMAE, "MAE"
+def yMAE(x):
     return abs(x)
-def calcLoss(yFunc, dyFunc, s):
-    x = np.random.randn(numRuns, 100)
-    y = yFunc(x)
-    dy = dyFunc(x)
-    start = time.time()
-    while not (-0.001 < dy < 0.001):
-        dy = dyFunc(x)
-        x -= learningRate * dy
-        y = yFunc(x)
-    end = time.time()
-    totalTime = end - start
-    return "{s} took {t} seconds to perform {n} calculations".format(s = s, t = totalTime, n = numRuns)
+def dxMAE(x):
+    return x / abs(x)
+
+# LOG functions
+def log():
+    return yLog, dxLog, "Log"
+def yLog(x):
+    return -1
+def dxLog(x):
+    return -1
+
+# Loss calculation
+def calcLoss(funcs, x):
+    yFunc, dxFunc, funcName = funcs()
+    dx = dxFunc(x)
+    xGraph = []
+    yGraph = []
+    steps = 0
+    while not ((np.sum(x) < 0.001) and (np.sum(x) > -0.001)):
+        xGraph.append(x)
+        dx = dxFunc(x)
+        x -= learningRate * dx
+        steps += 1
+    return xGraph, yGraph
 def main():
-    print(calcLoss(MSE, dMSE, "MSE"))
-    print(calcLoss())
+    x1 = np.random.randn(n, 1) * 100
+    x2 = np.copy(x1)
+
+    w1 = np.random.randn(n, 1)
+    w2 = np.copy(w1)
+    print(w1)
+
+    print(calcLoss(MSE, x1))
+    print(calcLoss(MAE, x2))
 main()
