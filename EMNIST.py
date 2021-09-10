@@ -12,21 +12,15 @@ trainSetY = idx2numpy.convert_from_file(trainLabels)
 testSetXOrig = idx2numpy.convert_from_file(testImages)
 testSetY = idx2numpy.convert_from_file(testLabels)
 
-A = np.array([[1], [2], [3], [4]])
-B = np.array(1, 2, 3)
-print("A: " + str(A))
-print("B: " + str(B))
-print("np.dot(A, B): " + str(np.dot(A, B)))
-
-# steps:
 # alter training and test set if needed (global) - x.reshape(x.shape[0], -1).T - gives a vector
-def initializeParameters(n_x, n_h, n_y):
+def initializeParametersDeep(layer_dims):
     return parameters
-def linearActivationForward(A_prev, W, b, activation):
-    return A, cache
+def lModelForward(X, parameters):
+    return AL, caches
 def computeCost(AL, Y):
     return cost
-def linearActivationBackward(dA, cache, activation):
-    return dA_prev, dW, db
+def lModelBackward(AL, Y, caches):
+    return grads
 def updateParameters(parameters, grads, learningRate):
     return parameters
+# implement with a function: xLayers(X, Y, layerDims, learningRate = x, numIterations = x, printCost = False)
