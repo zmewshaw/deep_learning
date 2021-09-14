@@ -13,7 +13,7 @@ testSetXOrig = idx2numpy.convert_from_file(testImages)
 testSetY = idx2numpy.convert_from_file(testLabels)
 
 # alter training and test set if needed (global) - x.reshape(x.shape[0], -1).T - gives a vector
-def initializeParametersDeep(layer_dims):
+def initializeParametersDeep(layerDims):
     return parameters
 def lModelForward(X, parameters):
     return AL, caches
