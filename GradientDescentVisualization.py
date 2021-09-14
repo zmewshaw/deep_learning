@@ -3,53 +3,35 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 # Initialize hyperparameters and variables | n is number of inputs, m is size of training set.
-learningRate = 0.01
-n = 2
+learning_rate = 0.01
+n = 1
 m = 100
 
-X = np.random.randn(n, m)
+X0 = np.random.randn(n, m)
+Y0 = np.zeros((1, m))
+W0 = np.random.randn(1, n)
+b0 = np.zeros((1, 1))
+dW0 = np.zeros((1, n))
+db0 = np.zeros((1, 1))
 
-W = np.random.randn(1, n)
-b = np.zeros((n, 1))
-
-# ALL FUNCTIONS ARE CENTERED AROUND 0 FOR SIMPLICITY (Y = 0)
+def forward_prop(X, W, b):
+    Z = np.dot(W, X) + b
+    A = max(0, Z)
+    MSE_X = np.sum(A ** 2) / m
+    MAE_X = np.sum(abs(A)) / m
+    Log_X = np.sum(-np.log(1 - A)) / m
+    return Z, A, MSE_X, MAE_X, Log_X
+# ALL FUNCTIONS ARE CENTERED AROUND 0 FOR SIMPLICITY (Y = 0), Y is not our actual Y axis, it is simply our labeled training set (zeros).
 # MSE (Mean Squared Error) functions
-def MSE():
-    return yMSE, dxMSE, "MSE"
-def yMSE(x):
-    return x ** 2
-def dxMSE(x):
-    return x * 2
-
 # MAE (Mean Absolute Error) functions
-def MAE():
-    return yMAE, dxMAE, "MAE"
-def yMAE(x):
-    return abs(x)
-def dxMAE(x):
-    return x / abs(x)
 
-# LOG functions
-def log():
-    return yLog, dxLog, "Log"
-def yLog(x):
-    return -1
-def dxLog(x):
-    return -1
+# Get the position of all balls on the screen for animation
+def get_pos(t=0):
+    X, Y = X0, Y0
+    parameters = W0, b0
+    while True:
+        cache = forward_prop(X, parameters)
+        
 
-# Loss calculation
-def calcLoss(funcs, x):
-    yFunc, dxFunc, funcName = funcs()
-    dx = dxFunc(x)
-    xGraph = []
-    yGraph = []
-    steps = 0
-    while not ((np.sum(x) < 0.001) and (np.sum(x) > -0.001)):
-        xGraph.append(x)
-        dx = dxFunc(x)
-        x -= learningRate * dx
-        steps += 1
-    return xGraph, yGraph
-
-print(calcLoss(MSE, x1))
-print(calcLoss(MAE, x2))
+# Initialize the figure for animation
+def init():
