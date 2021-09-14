@@ -1,14 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
-# hyperparams
+# Initialize hyperparameters and variables | n is number of inputs, m is size of training set.
 learningRate = 0.01
 n = 2
+m = 100
 
-for i in range(n):
-    
+X = np.random.randn(n, m)
 
-# MSE functions
+W = np.random.randn(1, n)
+b = np.zeros((n, 1))
+
+# ALL FUNCTIONS ARE CENTERED AROUND 0 FOR SIMPLICITY (Y = 0)
+# MSE (Mean Squared Error) functions
 def MSE():
     return yMSE, dxMSE, "MSE"
 def yMSE(x):
@@ -16,7 +21,7 @@ def yMSE(x):
 def dxMSE(x):
     return x * 2
 
-# MAE functions
+# MAE (Mean Absolute Error) functions
 def MAE():
     return yMAE, dxMAE, "MAE"
 def yMAE(x):
@@ -45,14 +50,6 @@ def calcLoss(funcs, x):
         x -= learningRate * dx
         steps += 1
     return xGraph, yGraph
-def main():
-    x1 = np.random.randn(n, 1) * 100
-    x2 = np.copy(x1)
 
-    w1 = np.random.randn(n, 1)
-    w2 = np.copy(w1)
-    print(w1)
-
-    print(calcLoss(MSE, x1))
-    print(calcLoss(MAE, x2))
-main()
+print(calcLoss(MSE, x1))
+print(calcLoss(MAE, x2))
