@@ -6,15 +6,15 @@ train_labels = "C:/Users/zmews/GitHub/"
 test_images = "C:/Users/zmews/GitHub/"
 test_labels = "C:/Users/zmews/GitHub/"
 
-# Dataset - TBD (binary classification)
-
-def sigmoid(z):
-    # INSERT CODE HERE
-    return s
+# Dataset - TBD (data classification)
 
 def initialize_with_zeros(dim):
     # INSERT CODE HERE
     return w, b
+
+def sigmoid(z):
+    # INSERT CODE HERE
+    return s
 
 def propagate(w, b, X, Y):
     # INSERT CODE HERE
@@ -34,3 +34,4 @@ def model(X_train, Y_train, X_test, Y_test, num_iterations=2000, learning_rate=0
 
 # example execution:
 logistic_regression_model = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations=2000, learning_rate=0.001)
+print(logistic_regression_model["costs"])
