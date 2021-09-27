@@ -1,5 +1,3 @@
-import numpy as np
+x = [0, 3, 4, 5]
 
-x = np.zeros((4, 4))
-print(x)
-print(np.exp(1, x))
+print(x[0:3])
