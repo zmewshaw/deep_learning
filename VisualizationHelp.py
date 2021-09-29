@@ -1,3 +1,6 @@
+
+# THIS IS TAKEN FROM A SAMPLE WEBSITE, NOT MY CODE
+
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
